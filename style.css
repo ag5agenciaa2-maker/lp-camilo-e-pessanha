@@ -282,6 +282,11 @@ em { font-style: italic; }
 @keyframes goldLineIn { to { transform: scaleY(1); } }
 .hero__left-inner { max-width: 720px; position: relative; }
 
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+
 .hero__title {
   font-family: var(--serif);
   font-weight: 500;
@@ -291,6 +296,7 @@ em { font-style: italic; }
   margin: 0 0 20px;
   color: var(--ivory);
   text-wrap: balance;
+  animation: heroFadeIn 800ms var(--ease) 100ms both;
 }
 .hero__title em {
   font-family: var(--serif);
@@ -305,9 +311,10 @@ em { font-style: italic; }
   color: rgba(245, 242, 236, 0.72);
   max-width: 520px;
   margin: 0 0 28px;
+  animation: heroFadeIn 800ms var(--ease) 200ms both;
 }
 
-.hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+.hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; animation: heroFadeIn 800ms var(--ease) 300ms both; }
 
 .hero__meta {
   display: flex;
@@ -315,6 +322,7 @@ em { font-style: italic; }
   gap: 28px;
   padding-top: 24px;
   border-top: 1px solid rgba(201, 168, 76, 0.2);
+  animation: heroFadeIn 800ms var(--ease) 400ms both;
 }
 .hero__meta-item { display: flex; flex-direction: column; gap: 4px; }
 .hero__meta-item strong {
