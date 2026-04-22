@@ -393,7 +393,8 @@
       <div class="hero__left">
         <span class="hero__gold-line" aria-hidden="true"></span>
         <div class="hero__left-inner">
-          <p class="eyebrow" data-anim="up">
+          <!-- LCP fix: eyebrow sem data-anim — era o elemento LCP, não pode ter opacity:0 -->
+          <p class="eyebrow">
             <span class="eyebrow__rule"></span>
             Advocacia estratégica · Campo Grande — RJ
           </p>
