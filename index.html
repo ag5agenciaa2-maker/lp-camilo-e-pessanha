@@ -33,17 +33,31 @@
   <meta name="twitter:image" content="https://www.camiloepessanha.ag5agencia.site/assets/camilo-pessanha-dr-rodrigo-advogado-foto-perfil.webp">
 
   <!-- Preloads Críticos -->
-  <link rel="preload" href="assets/camilo-pessanha-dr-rodrigo-advogado-foto-perfil.webp" as="image">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" as="style">
+  <!-- PageSpeed fix: preload LCP hero image -->
+  <link rel="preload" href="assets/camilo-pessanha-dr-rodrigo-advogado-foto-perfil.webp" as="image" fetchpriority="high">
 
+  <!-- PageSpeed fix: preconnect before font requests -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  
-  <link rel="icon" type="image/x-icon" href="assets/favicon-camilo-pessanha-advocacia.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- PageSpeed fix: preload then async-load Google Fonts to eliminate render-blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- PageSpeed fix: async-load Font Awesome (non-critical, icons below fold) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+  <!-- PageSpeed fix: preload + load síncrono do CSS principal (evita FOUC) -->
+  <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="cookie-banner.css">
+
+  <!-- PageSpeed fix: async-load cookie banner CSS (não crítico, sem risco de FOUC) -->
+  <link rel="preload" href="cookie-banner.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="cookie-banner.css"></noscript>
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon-camilo-pessanha-advocacia.ico">
 
   <!-- Schema.org JSON-LD @graph unificado (Skill AG5 v2.2) -->
   <script type="application/ld+json">
@@ -320,7 +334,7 @@
         <span class="topbar__item"><span class="dot-pulse"></span> Atendimento Criminal 24h / 7 dias</span>
       </div>
       <div class="topbar__right">
-        <a href="https://wa.me/5521972742109" class="topbar__item" target="_blank" rel="noopener">
+        <a href="https://wa.me/5521972742109" class="topbar__item" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Camilo e Pessanha Advocacia (21) 97274-2109">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
             <path
               d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5 0-.5.3-3.1-.7-2.6-1.1-4.2-3.7-4.3-3.9-.1-.2-1-1.4-1-2.7 0-1.3.7-1.9 1-2.1.3-.2.6-.3.8-.3h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.6.3.1.4.1.6-.1l.8-.9c.2-.2.3-.2.6-.1l1.7.8c.3.1.5.2.5.3.2.2.2.7 0 1.3z" />
@@ -328,7 +342,7 @@
           (21) 97274-2109
         </a>
         <a href="https://maps.google.com/?q=R.+Campo+Grande,+1014+sala+326+Campo+Grande+Rio+de+Janeiro"
-          class="topbar__item topbar__item--sep" target="_blank" rel="noopener">
+          class="topbar__item topbar__item--sep" target="_blank" rel="noopener noreferrer" aria-label="Ver endereço no Google Maps">
           R. Campo Grande, 1014 · Sala 326 — RJ
         </a>
       </div>
@@ -354,7 +368,7 @@
         <a href="#faq">FAQ</a>
         <a href="#contato">Contato</a>
       </nav>
-      <a href="https://wa.me/5521972742109" class="btn btn--gold nav__cta" target="_blank" rel="noopener">
+      <a href="https://wa.me/5521972742109" class="btn btn--gold nav__cta" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
         Fale conosco
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
           aria-hidden="true">
@@ -387,7 +401,7 @@
             Atendimento 24 horas para flagrantes e audiências de custódia em toda a Zona Oeste do Rio.
           </p>
           <div class="hero__ctas" data-anim="up" data-delay="300">
-            <a href="https://wa.me/5521972742109" class="btn btn--gold" target="_blank" rel="noopener">
+            <a href="https://wa.me/5521972742109" class="btn btn--gold" target="_blank" rel="noopener noreferrer" aria-label="Fale pelo WhatsApp 24h – Plantão Criminal">
               Fale pelo WhatsApp 24h
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
                 aria-hidden="true">
@@ -400,8 +414,8 @@
           </div>
           <div class="hero__meta" data-anim="up" data-delay="400">
             <div class="hero__meta-item">
-              <strong>5,0</strong>
-              <span>★★★★★<br />34 avaliações no Google</span>
+              <strong>★★★★★</strong>
+              <span>+30 avaliações<br />5 estrelas no Google</span>
             </div>
             <div class="hero__meta-sep" aria-hidden="true"></div>
             <div class="hero__meta-item">
@@ -793,9 +807,9 @@
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 002.18 7.05l3.67 2.84C6.71 7.31 9.14 5.38 12 5.38z" />
             </svg>
           </span>
-          <strong>5,0</strong>
-          <span class="reviews__stars">★★★★★</span>
-          <span class="reviews__count">34 avaliações no Google</span>
+          <strong>★★★★★</strong>
+          <span class="reviews__stars"></span>
+          <span class="reviews__count">+30 avaliações 5 estrelas no Google</span>
         </div>
       </header>
 
@@ -920,24 +934,25 @@
           </div>
           <div>
             <dt>Telefone &amp; WhatsApp</dt>
-            <dd><a href="https://wa.me/5521972742109" target="_blank" rel="noopener">(21) 97274-2109</a></dd>
+            <!-- Accessibility fix: aria-label distinto para número de telefone -->
+            <dd><a href="https://wa.me/5521972742109" target="_blank" rel="noopener noreferrer" aria-label="Ligar ou WhatsApp (21) 97274-2109 – Telefone do escritório">(21) 97274-2109</a></dd>
           </div>
           <div>
             <dt>Instagram</dt>
             <dd><a href="https://www.instagram.com/camiloepessanhaadvogados" target="_blank"
-                rel="noopener">@camiloepessanhaadvogados</a></dd>
+                rel="noopener noreferrer" aria-label="Instagram @camiloepessanhaadvogados – Redes sociais do escritório">@camiloepessanhaadvogados</a></dd>
           </div>
         </dl>
         <div class="location__ctas">
           <a class="btn btn--gold"
             href="https://www.google.com/maps/dir//CAMILO+E+PESSANHA+ADVOCACIA+-+CAMPO+GRANDE+-+RJ+-+24H,+PASSEIO+EMPRESARIAL+-+R.+Campo+Grande,+1014+-+sala+326+-+Campo+Grande,+Rio+de+Janeiro+-+RJ,+23080-000/@-22.9014584,-43.5621949,17z/data=!4m16!1m7!3m6!1s0x9be3b8f2ba7ebf:0x63bc5f36aef54348!2sCAMILO+E+PESSANHA+ADVOCACIA+-+CAMPO+GRANDE+-+RJ+-+24H!8m2!3d-22.9014584!4d-43.55962!16s%2Fg%2F11p18l86fb!4m7!1m0!1m5!1m1!1s0x9be3b8f2ba7ebf:0x63bc5f36aef54348!2m2!1d-43.55962!2d-22.9014584?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank"
-            rel="noopener">
+            rel="noopener noreferrer" aria-label="Como chegar ao escritório – Google Maps">
             Como chegar
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </a>
-          <a class="btn btn--ghost-dark" href="https://share.google/ftbJvimRiAIhSMimZ" target="_blank" rel="noopener">
+          <a class="btn btn--ghost-dark" href="https://share.google/ftbJvimRiAIhSMimZ" target="_blank" rel="noopener noreferrer" aria-label="Ver Camilo e Pessanha no Google Business">
             Ver no Google Business
           </a>
         </div>
@@ -970,16 +985,17 @@
           imediatamente, 24 horas.
         </p>
         <div class="cta__lines">
-          <a href="https://wa.me/5521972742109" class="cta__line" target="_blank" rel="noopener">
+          <!-- Accessibility fix: aria-label distinto para contato na seção CTA -->
+          <a href="https://wa.me/5521972742109" class="cta__line" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp 24h – (21) 97274-2109 – Contato direto">
             <span class="cta__line-lbl">WhatsApp 24h</span>
             <span class="cta__line-val">(21) 97274-2109</span>
           </a>
-          <a href="https://www.instagram.com/camiloepessanhaadvogados" class="cta__line" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/camiloepessanhaadvogados" class="cta__line" target="_blank" rel="noopener noreferrer" aria-label="Instagram @camiloepessanhaadvogados – Redes sociais">
             <span class="cta__line-lbl">Instagram</span>
             <span class="cta__line-val">@camiloepessanhaadvogados</span>
           </a>
           <a href="https://www.google.com/maps/dir//CAMILO+E+PESSANHA+ADVOCACIA+-+CAMPO+GRANDE+-+RJ+-+24H,+PASSEIO+EMPRESARIAL+-+R.+Campo+Grande,+1014+-+sala+326+-+Campo+Grande,+Rio+de+Janeiro+-+RJ,+23080-000/@-22.9014584,-43.5621949,17z/data=!4m16!1m7!3m6!1s0x9be3b8f2ba7ebf:0x63bc5f36aef54348!2sCAMILO+E+PESSANHA+ADVOCACIA+-+CAMPO+GRANDE+-+RJ+-+24H!8m2!3d-22.9014584!4d-43.55962!16s%2Fg%2F11p18l86fb!4m7!1m0!1m5!1m1!1s0x9be3b8f2ba7ebf:0x63bc5f36aef54348!2m2!1d-43.55962!2d-22.9014584?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D"
-            class="cta__line" target="_blank" rel="noopener">
+            class="cta__line" target="_blank" rel="noopener noreferrer" aria-label="Endereço – R. Campo Grande 1014 sala 326 – Google Maps">
             <span class="cta__line-lbl">Endereço</span>
             <span class="cta__line-val">R. Campo Grande, 1014 — sala 326</span>
           </a>
@@ -1022,8 +1038,9 @@
           <textarea id="f-msg" name="message" rows="4"
             placeholder="O que aconteceu, quando, e o que você precisa resolver."></textarea>
         </div>
-        <label class="field-check">
-          <input type="checkbox" required /> <span>Concordo com o tratamento dos meus dados conforme a LGPD apenas para
+        <!-- Accessibility fix: checkbox com id para vincular label corretamente -->
+        <label class="field-check" for="f-lgpd">
+          <input type="checkbox" id="f-lgpd" name="lgpd" required /> <span>Concordo com o tratamento dos meus dados conforme a LGPD apenas para
             retorno do contato.</span>
         </label>
         <button type="submit" class="btn btn--gold btn--block">
@@ -1043,7 +1060,8 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__col footer__col--brand">
-        <a href="https://share.google/ftbJvimRiAIhSMimZ" target="_blank" rel="noopener" class="footer__brand">
+        <!-- Best Practices fix: rel="noreferrer" completo em target="_blank" -->
+        <a href="https://share.google/ftbJvimRiAIhSMimZ" target="_blank" rel="noopener noreferrer" class="footer__brand" aria-label="Camilo e Pessanha Advocacia no Google Business">
           <img src="assets/camilo-pessanha-advocacia-logo-completa-desktop.webp" alt="Camilo & Pessanha Advocacia" width="130" height="38" />
         </a>
         <p class="footer__tag">
@@ -1054,22 +1072,24 @@
 
       <div class="footer__col">
         <h4>Áreas</h4>
+        <!-- Accessibility fix: aria-labels distintos para links com mesmo destino -->
         <ul>
-          <li><a href="#areas">Direito Criminal 24h</a></li>
-          <li><a href="#areas">Previdenciário · INSS</a></li>
-          <li><a href="#areas">Trabalhista</a></li>
-          <li><a href="#areas">Inventário</a></li>
-          <li><a href="#areas">Família</a></li>
+          <li><a href="#areas" aria-label="Áreas de atuação – Direito Criminal 24h">Direito Criminal 24h</a></li>
+          <li><a href="#areas" aria-label="Áreas de atuação – Previdenciário INSS">Previdenciário · INSS</a></li>
+          <li><a href="#areas" aria-label="Áreas de atuação – Trabalhista">Trabalhista</a></li>
+          <li><a href="#areas" aria-label="Áreas de atuação – Inventário">Inventário</a></li>
+          <li><a href="#areas" aria-label="Áreas de atuação – Família">Família</a></li>
         </ul>
       </div>
 
       <div class="footer__col">
         <h4>Escritório</h4>
+        <!-- Accessibility fix: aria-labels distintos para links com mesmo destino -->
         <ul>
-          <li><a href="#sobre">Sócios</a></li>
-          <li><a href="#depoimentos">Avaliações</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="#sobre" aria-label="Sobre o escritório – Sócios">Sócios</a></li>
+          <li><a href="#depoimentos" aria-label="Ir para avaliações dos clientes">Avaliações</a></li>
+          <li><a href="#faq" aria-label="Ir para perguntas frequentes">FAQ</a></li>
+          <li><a href="#contato" aria-label="Ir para formulário de contato">Contato</a></li>
         </ul>
       </div>
 
@@ -1077,7 +1097,8 @@
         <h4>Contato</h4>
         <ul class="footer__contact">
           <li>
-            <a href="https://share.google/ftbJvimRiAIhSMimZ" target="_blank" rel="noopener">
+            <!-- Best Practices fix: rel="noreferrer" + aria-label -->
+            <a href="https://share.google/ftbJvimRiAIhSMimZ" target="_blank" rel="noopener noreferrer" aria-label="Camilo e Pessanha Advocacia no Google Business">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" />
@@ -1086,8 +1107,9 @@
             </a>
           </li>
           <li>
+            <!-- Best Practices fix: rel="noreferrer" + aria-label -->
             <a href="https://www.google.com/maps/dir//CAMILO+E+PESSANHA+ADVOCACIA+-+CAMPO+GRANDE+-+RJ+-+24H,+PASSEIO+EMPRESARIAL+-+R.+Campo+Grande,+1014+-+sala+326+-+Campo+Grande,+Rio+de+Janeiro+-+RJ,+23080-000/@-22.9014584,-43.5621949,17z/data=!4m16!1m7!3m6!1s0x9be3b8f2ba7ebf:0x63bc5f36aef54348!2sCAMILO+E+PESSANHA+ADVOCACIA+-+CAMPO+GRANDE+-+RJ+-+24H!8m2!3d-22.9014584!4d-43.55962!16s%2Fg%2F11p18l86fb!4m7!1m0!1m5!1m1!1s0x9be3b8f2ba7ebf:0x63bc5f36aef54348!2m2!1d-43.55962!2d-22.9014584?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank" rel="noopener">
+              target="_blank" rel="noopener noreferrer" aria-label="Ver endereço no Google Maps – R. Campo Grande 1014 sala 326">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
                 <path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" />
                 <circle cx="12" cy="10" r="2.5" />
@@ -1096,7 +1118,8 @@
             </a>
           </li>
           <li>
-            <a href="https://wa.me/5521972742109" target="_blank" rel="noopener">
+            <!-- Accessibility fix: aria-label distinto para link de WhatsApp no footer -->
+            <a href="https://wa.me/5521972742109" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (21) 97274-2109 – Contato pelo WhatsApp">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                 <path
                   d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5 0-.5.3-3.1-.7-2.6-1.1-4.2-3.7-4.3-3.9-.1-.2-1-1.4-1-2.7 0-1.3.7-1.9 1-2.1.3-.2.6-.3.8-.3h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.4 1.5 2.7 1.6.3.1.4.1.6-.1l.8-.9c.2-.2.3-.2.6-.1l1.7.8c.3.1.5.2.5.3.2.2.2.7 0 1.3z" />
@@ -1105,7 +1128,7 @@
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/camiloepessanhaadvogados" target="_blank" rel="noopener">
+            <a href="https://www.instagram.com/camiloepessanhaadvogados" target="_blank" rel="noopener noreferrer" aria-label="Instagram @camiloepessanhaadvogados">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6">
                 <rect x="3" y="3" width="18" height="18" rx="5" />
                 <circle cx="12" cy="12" r="4" />
@@ -1139,7 +1162,7 @@
         </div>
       </div>
       <div class="footer-credits-right">
-        Desenvolvido por <a href="https://www.ag5agencia.com.br" target="_blank" rel="noopener">AG5 Agência</a>
+        Desenvolvido por <a href="https://www.ag5agencia.com.br" target="_blank" rel="noopener noreferrer">AG5 Agência</a>
       </div>
     </div>
   </footer>
@@ -1159,7 +1182,8 @@
         </svg>
       </button>
     </div>
-    <nav class="drawer__nav">
+    <!-- Accessibility fix: aria-label no nav mobile -->
+    <nav class="drawer__nav" aria-label="Navegação mobile">
       <a href="#areas" class="drawer__link">Áreas de atuação</a>
       <a href="#sobre" class="drawer__link">Sobre o escritório</a>
       <a href="#depoimentos" class="drawer__link">Depoimentos</a>
@@ -1168,7 +1192,7 @@
       <a href="#contato" class="drawer__link">Contato</a>
     </nav>
     <div class="drawer__footer">
-      <a href="https://wa.me/5521972742109" class="btn btn--gold btn--block" target="_blank" rel="noopener">
+      <a href="https://wa.me/5521972742109" class="btn btn--gold btn--block" target="_blank" rel="noopener noreferrer" aria-label="Fale pelo WhatsApp 24h – Menu mobile">
         Fale pelo WhatsApp 24h
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M13 6l6 6-6 6" />
@@ -1204,7 +1228,6 @@
     <!-- Botão Flutuante -->
     <a href="https://wa.me/5521972742109" class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="whatsapp-btn">
       <i class="fa-brands fa-whatsapp"></i>
-      <span class="whatsapp-notify" id="whatsapp-notify">1</span>
     </a>
   </div>
 

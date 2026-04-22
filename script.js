@@ -40,16 +40,7 @@
     });
   }
 
-  /* --------- Hero Photo Slider --------- */
-  const heroSlides = document.querySelectorAll('.hero__photo-slide');
-  if (heroSlides.length > 1) {
-    let currentSlide = 0;
-    setInterval(() => {
-      heroSlides[currentSlide].classList.remove('hero__photo-slide--active');
-      currentSlide = (currentSlide + 1) % heroSlides.length;
-      heroSlides[currentSlide].classList.add('hero__photo-slide--active');
-    }, 5000);
-  }
+  /* Hero Photo Slider — implementação única abaixo (PageSpeed fix: removida duplicata) */
 
   /* --------- IntersectionObserver — reveal animations --------- */
   const animTargets = document.querySelectorAll('[data-anim]');
@@ -301,16 +292,15 @@
   /* --------- WhatsApp Premium Bubble --------- */
   (function initWhatsappBubble() {
     const bubble = document.getElementById('whatsapp-message');
-    const notify = document.getElementById('whatsapp-notify');
     const closeBtn = document.getElementById('close-bubble');
     const whatsappBtn = document.getElementById('whatsapp-btn');
     
-    if (!bubble || !notify) return;
+    if (!bubble) return;
 
     // 1. Mostrar balão após 10 segundos
     setTimeout(() => {
         bubble.classList.add('show');
-        
+
         // 2. Desaparecer automaticamente após 20 segundos de exibição
         setTimeout(() => {
             if (bubble.classList.contains('show')) {
@@ -321,10 +311,6 @@
 
     const hideBubble = () => {
         bubble.classList.remove('show');
-        // 3. Mostrar notificação 5 segundos após o balão sumir
-        setTimeout(() => {
-            notify.classList.add('show');
-        }, 5000);
     };
 
     if (closeBtn) {
@@ -337,7 +323,6 @@
     if (whatsappBtn) {
       whatsappBtn.addEventListener('click', () => {
           bubble.classList.remove('show');
-          notify.classList.remove('show');
       });
     }
   })();
