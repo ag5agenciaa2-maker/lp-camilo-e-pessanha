@@ -515,7 +515,7 @@
         <li class="acc__item is-open" data-area="criminal">
           <button class="acc__head">
             <span class="acc__num">01</span>
-            <div class="acc__thumb"><img src="assets/criminal_law_premium_1776882867028.png" alt="" width="48" height="48" /></div>
+            <div class="acc__thumb"><img src="assets/criminal_law_premium_1776882867028.webp" alt="" width="48" height="48" /></div>
             <span class="acc__title">Direito Criminal <span class="acc__tag">24h</span></span>
             <span class="acc__icon" aria-hidden="true"></span>
           </button>
@@ -535,7 +535,7 @@
                 <li>Tribunal do Júri</li>
               </ul>
               <div class="acc__media">
-                <img src="assets/criminal_law_premium_1776882867028.png" alt="Direito Criminal" width="400" height="300" loading="lazy" />
+                <img src="assets/criminal_law_premium_1776882867028.webp" alt="Direito Criminal" width="400" height="300" loading="lazy" />
               </div>
             </div>
           </div>
@@ -544,7 +544,7 @@
         <li class="acc__item" data-area="previdenciario">
           <button class="acc__head">
             <span class="acc__num">02</span>
-            <div class="acc__thumb"><img src="assets/social_security_documents_premium_1776883155373.png" alt="" width="48" height="48" /></div>
+            <div class="acc__thumb"><img src="assets/social_security_documents_premium_1776883155373.webp" alt="" width="48" height="48" /></div>
             <span class="acc__title">Direito Previdenciário</span>
             <span class="acc__icon" aria-hidden="true"></span>
           </button>
@@ -564,7 +564,7 @@
                 <li>Pensão por morte</li>
               </ul>
               <div class="acc__media">
-                <img src="assets/social_security_documents_premium_1776883155373.png" alt="Direito Previdenciário" width="400" height="300" loading="lazy" />
+                <img src="assets/social_security_documents_premium_1776883155373.webp" alt="Direito Previdenciário" width="400" height="300" loading="lazy" />
               </div>
             </div>
           </div>
@@ -573,7 +573,7 @@
         <li class="acc__item" data-area="trabalhista">
           <button class="acc__head">
             <span class="acc__num">03</span>
-            <div class="acc__thumb"><img src="assets/labor_law_premium_1776882895741.png" alt="" width="48" height="48" /></div>
+            <div class="acc__thumb"><img src="assets/labor_law_premium_1776882895741.webp" alt="" width="48" height="48" /></div>
             <span class="acc__title">Direito Trabalhista</span>
             <span class="acc__icon" aria-hidden="true"></span>
           </button>
@@ -593,7 +593,7 @@
                 <li>Acordos e homologações</li>
               </ul>
               <div class="acc__media">
-                <img src="assets/labor_law_premium_1776882895741.png" alt="Direito Trabalhista" width="400" height="300" loading="lazy" />
+                <img src="assets/labor_law_premium_1776882895741.webp" alt="Direito Trabalhista" width="400" height="300" loading="lazy" />
               </div>
             </div>
           </div>
@@ -631,7 +631,7 @@
         <li class="acc__item" data-area="familia">
           <button class="acc__head">
             <span class="acc__num">05</span>
-            <div class="acc__thumb"><img src="assets/family_law_symbolic_premium_1776883171077.png" alt="" width="48" height="48" /></div>
+            <div class="acc__thumb"><img src="assets/family_law_symbolic_premium_1776883171077.webp" alt="" width="48" height="48" /></div>
             <span class="acc__title">Direito de Família</span>
             <span class="acc__icon" aria-hidden="true"></span>
           </button>
@@ -651,7 +651,7 @@
                 <li>Alteração de regime de bens</li>
               </ul>
               <div class="acc__media">
-                <img src="assets/family_law_symbolic_premium_1776883171077.png" alt="Direito de Família" width="400" height="300" loading="lazy" />
+                <img src="assets/family_law_symbolic_premium_1776883171077.webp" alt="Direito de Família" width="400" height="300" loading="lazy" />
               </div>
             </div>
           </div>
@@ -1226,8 +1226,9 @@
     </div>
     
     <!-- Botão Flutuante -->
-    <a href="https://wa.me/5521972742109" class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="whatsapp-btn">
-      <i class="fa-brands fa-whatsapp"></i>
+    <!-- Accessibility fix: aria-label no botão flutuante sem texto visível -->
+    <a href="https://wa.me/5521972742109" class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="whatsapp-btn" aria-label="Fale conosco pelo WhatsApp (21) 97274-2109">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
   </div>
 

@@ -209,15 +209,17 @@ em { font-style: italic; }
   transition: color 300ms ease;
 }
 .nav__wordmark-top .amp { color: var(--gold); font-style: italic; font-weight: 400; }
+/* Accessibility fix: dourado sobre ivory falha WCAG 4.5:1 → navy no estado claro */
 .nav__wordmark-bot {
   font-family: var(--sans);
   font-size: 10px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--navy);
   margin-top: 4px;
   transition: color 300ms ease;
 }
+.nav.is-scrolled .nav__wordmark-bot { color: var(--ivory); }
 .nav__links { display: flex; gap: 32px; }
 .nav__links a {
   position: relative;
@@ -393,8 +395,9 @@ em { font-style: italic; }
 .hero__badge strong {
   display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
 }
+/* Accessibility fix: text-mute (#8a8f9d) sobre ivory falha 4.5:1 → usar text-soft (#4e5668) */
 .hero__badge small {
-  display: block; font-size: 11px; color: var(--text-mute); letter-spacing: 0.05em; margin-top: 2px;
+  display: block; font-size: 11px; color: var(--text-soft); letter-spacing: 0.05em; margin-top: 2px;
 }
 .hero__badge-dot {
   width: 10px; height: 10px; border-radius: 50%;
@@ -886,13 +889,21 @@ em { font-style: italic; }
   transition: all 250ms ease;
 }
 .reviews__btn:hover { background: var(--gold); color: var(--navy-deep); }
-.reviews__dots { display: flex; gap: 8px; }
+/* Accessibility fix: touch target mínimo 44x44px via padding para não alterar visual */
+.reviews__dots { display: flex; gap: 4px; }
 .reviews__dots button {
   width: 8px; height: 8px; border-radius: 50%;
   background: rgba(201, 168, 76, 0.3);
   transition: all 250ms ease;
+  padding: 18px 10px;
+  background-clip: content-box;
 }
-.reviews__dots button.is-active { background: var(--gold); width: 24px; border-radius: 4px; }
+.reviews__dots button.is-active {
+  background: var(--gold);
+  background-clip: content-box;
+  width: 24px;
+  border-radius: 4px;
+}
 
 /* ---------- FAQ ---------- */
 .faq { background: var(--ivory); padding: clamp(100px, 12vh, 160px) 0; }
@@ -954,9 +965,10 @@ em { font-style: italic; }
   margin: 0 0 32px;
 }
 .location__info > div { display: flex; flex-direction: column; gap: 4px; }
+/* Accessibility fix: dourado sobre ivory falha WCAG 4.5:1 em fonte 11px → navy */
 .location__info dt {
   font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold); font-weight: 500;
+  color: var(--navy); font-weight: 600;
 }
 .location__info dd { margin: 0; font-size: 14px; color: var(--navy-deep); line-height: 1.5; }
 .location__info a:hover { color: var(--gold); }
@@ -1121,9 +1133,10 @@ em { font-style: italic; }
   gap: 4px;
 }
 
+/* Accessibility fix: contraste WCAG 4.5:1 mínimo sobre navy-deep (#0D1B2E) */
 .footer-copyright {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .footer-legal-links {
@@ -1131,13 +1144,16 @@ em { font-style: italic; }
   flex-wrap: wrap;
   align-items: center;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.75);
 }
 
+/* Accessibility fix: touch target mínimo via padding */
 .footer-legal-links a {
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
+  padding: 8px 0;
+  display: inline-block;
 }
 
 .footer-legal-links a:hover {
@@ -1151,7 +1167,7 @@ em { font-style: italic; }
 
 .footer-credits-right {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
   white-space: nowrap;
 }
 
@@ -1167,12 +1183,14 @@ em { font-style: italic; }
 }
 
 /* COOKIE TOGGLE - Estilo iOS Minimalista */
+/* Accessibility fix: touch target mínimo via padding vertical */
 #ck-prefs-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   color: inherit;
   text-decoration: none;
+  padding: 8px 0;
 }
 
 .cookie-toggle {

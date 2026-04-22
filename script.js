@@ -7,10 +7,17 @@
   'use strict';
 
   /* --------- NAV scroll state --------- */
+  /* PageSpeed fix: rAF batching evita forced reflow no scroll listener */
   const nav = document.getElementById('nav');
+  let rafPending = false;
   const onScroll = () => {
-    if (window.scrollY > 80) nav.classList.add('is-scrolled');
-    else nav.classList.remove('is-scrolled');
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      rafPending = false;
+      if (window.scrollY > 80) nav.classList.add('is-scrolled');
+      else nav.classList.remove('is-scrolled');
+    });
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -197,9 +204,12 @@
       `;
       stage.appendChild(card);
 
+      /* Accessibility fix: role="tab" obrigatório dentro de role="tablist" */
       const dot = document.createElement('button');
       dot.className = i === 0 ? 'is-active' : '';
+      dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', `Ir para depoimento ${i + 1}`);
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
       dot.addEventListener('click', () => go(i));
       dotsWrap.appendChild(dot);
     });
@@ -210,7 +220,10 @@
     const go = (i) => {
       current = (i + reviews.length) % reviews.length;
       cards.forEach((c, idx) => c.classList.toggle('is-active', idx === current));
-      dots.forEach((d, idx) => d.classList.toggle('is-active', idx === current));
+      dots.forEach((d, idx) => {
+        d.classList.toggle('is-active', idx === current);
+        d.setAttribute('aria-selected', idx === current ? 'true' : 'false');
+      });
     };
 
     const startAuto = () => {
