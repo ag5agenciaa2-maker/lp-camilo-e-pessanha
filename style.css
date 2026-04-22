@@ -514,7 +514,9 @@ em { font-style: italic; }
 .areas__inner { max-width: 1360px; margin: 0 auto; padding: 0 36px; }
 
 .acc { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--navy-line); }
-.acc__item { border-bottom: 1px solid var(--navy-line); transition: background 300ms ease; }
+.acc__item { border-bottom: 1px solid var(--navy-line); transition: background 300ms ease, opacity 500ms ease-out, transform 500ms ease-out; }
+/* PageSpeed fix: classe para stagger via JS sem style inline (evita forced reflow) */
+.acc__item--hidden { opacity: 0; transform: translateX(-20px); }
 .acc__item.is-open { background: var(--white); }
 .acc__head {
   width: 100%;

@@ -63,30 +63,31 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   animTargets.forEach((t) => io.observe(t));
 
-  /* Hero elements: fire on load */
+  /* Hero elements: fire on load
+   * LCP fix: h1 recebe is-in imediatamente (sem delay) para que o Lighthouse
+   * meça o LCP assim que a fonte carregar, não após o timer artificial de 300ms.
+   * Elementos secundários (eyebrow, sub, ctas, meta) mantêm delay reduzido.
+   */
   document.querySelectorAll('.hero [data-anim]').forEach((el) => {
     const delay = parseInt(el.dataset.delay || '0', 10);
-    setTimeout(() => el.classList.add('is-in'), 200 + delay);
+    if (el.classList.contains('hero__title')) {
+      el.classList.add('is-in');
+    } else {
+      setTimeout(() => el.classList.add('is-in'), delay);
+    }
   });
 
   /* --------- Accordion (áreas) --------- */
+  /* PageSpeed fix: usa classes CSS em vez de style inline para evitar forced reflow */
   const acc = document.getElementById('acc');
   if (acc) {
-    // Stagger items on first reveal
     const accItems = acc.querySelectorAll('.acc__item');
-    accItems.forEach((item, i) => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateX(-20px)';
-      item.style.transition = 'opacity 500ms ease-out, transform 500ms ease-out';
-    });
+    accItems.forEach((item) => item.classList.add('acc__item--hidden'));
     const accIo = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           accItems.forEach((item, i) => {
-            setTimeout(() => {
-              item.style.opacity = '1';
-              item.style.transform = 'none';
-            }, i * 120);
+            setTimeout(() => item.classList.remove('acc__item--hidden'), i * 120);
           });
           accIo.disconnect();
         }
